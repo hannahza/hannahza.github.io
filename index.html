@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下落的树叶</title>
+	<style>
+        img{
+        	position:absolute;
+        }
+        #div1{
+        	width:20px;
+        	height:20px;
+        	border:1px solid red;
+        	border-radius: 100% 100% 100% 0;
+        }
+	</style>
+</head>
+<body>
+	
+   <div id="div1">
+   	
+   </div>
+	<script>
+         function Leaf(){
+         	this.width=parseInt(Math.random()*30)+50;
+         	this.pos={
+         		top:0,
+         		left:parseInt(Math.random()*
+         		(document.documentElement.clientWidth-this.width))
+         	};
+         	this.speed=parseInt(Math.random()*40)+10;
+         	this.fallTime=parseInt(Math.random()*1200)+100;//falltime后叶子开始下落
+
+         	this.oImg=new Image();//图片自己有一个添加新图片的方法
+         	this.oImg.src='img/' +(parseInt(Math.random()*4)+1)+'.png';
+         	this.oImg.style.top=this.pos.top;
+         	this.oImg.style.left=this.pos.left+'px';
+         	this.oImg.style.width=this.width+'px';
+         	document.body.appendChild(this.oImg);
+         }
+         Leaf.prototype.fall=function(){
+         		  var that=this;
+                  setInterval(function(){
+                  	that.oImg.style.top=that.oImg.offsetTop+10+'px';
+                  },this.speed)
+         }
+   		
+   		for(var i=0;i<8;i++){
+            (function(leaf){
+ 				setTimeout(function(){
+ 					leaf.fall();
+ 				},leaf.fallTime);
+            })(new Leaf());
+   		}
+
+
+
+
+
+
+	</script>
+</body>
+</html>
