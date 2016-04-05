@@ -2,62 +2,124 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>下落的树叶</title>
-	<style>
-        img{
-        	position:absolute;
-        }
-        #div1{
-        	width:20px;
-        	height:20px;
-        	border:1px solid red;
-        	border-radius: 100% 100% 100% 0;
-        }
-	</style>
+	<title>Hannahza</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	
-   <div id="div1">
-   	
-   </div>
-	<script>
-         function Leaf(){
-         	this.width=parseInt(Math.random()*30)+50;
-         	this.pos={
-         		top:0,
-         		left:parseInt(Math.random()*
-         		(document.documentElement.clientWidth-this.width))
-         	};
-         	this.speed=parseInt(Math.random()*40)+10;
-         	this.fallTime=parseInt(Math.random()*1200)+100;//falltime后叶子开始下落
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:;">Hannahza</a>
+        </div>
 
-         	this.oImg=new Image();//图片自己有一个添加新图片的方法
-         	this.oImg.src='img/' +(parseInt(Math.random()*4)+1)+'.png';
-         	this.oImg.style.top=this.pos.top;
-         	this.oImg.style.left=this.pos.left+'px';
-         	this.oImg.style.width=this.width+'px';
-         	document.body.appendChild(this.oImg);
-         }
-         Leaf.prototype.fall=function(){
-         		  var that=this;
-                  setInterval(function(){
-                  	that.oImg.style.top=that.oImg.offsetTop+10+'px';
-                  },this.speed)
-         }
-   		
-   		for(var i=0;i<8;i++){
-            (function(leaf){
- 				setTimeout(function(){
- 					leaf.fall();
- 				},leaf.fallTime);
-            })(new Leaf());
-   		}
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:;">Home</a>
+                </li>
+                
+                <li>
+                    <a href="javascript:;">About</a>
+                </li>
+                
+                <li>
+                    <a href="javascript:;">time</a>
+                </li>
+                
+                <li>
+                    <a href="javascript:;">Tags</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<header class="intro-header" style="background-image: url('img/home-bg.jpg');background-size:cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading " id="tag-heading">
+                    <h1>Hannahza</h1>
+                    <hr class="small">
+                    <span class="subheading"> 「  The way I never been to...梦想只要能持久，坚持下去，就能成为现实。」 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->           
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">		<div class="post-preview">
+               <a href="notes04.html">
+                <h2 class="post-title"> One - 学习笔记</h2>
+		        <h3 class="post-subtitle">
+		            RegExp 之贪婪模式、JavaScript 距离、图片预加载
+		        </h3>
+                <div class="post-content-preview">
+					一、RegExp 之贪婪模式
 
+					＃   什么是贪婪匹配？
+                    The three common quantifiers (*, + and ?) are greedy by default because they match as many characters as possible....
+                </div>
+                </a>
+                <p class="post-meta">Posted by Hannanhza on April 4, 2016</p>
+            </div>
+            <hr>
 
+			<div class="post-preview">
+			    <a href="notes05-1.html">
+			        <h2 class="post-title">RequireJS 的基础与入门</h2>
+			        <h3 class="post-subtitle">
+			            通过实例，简单介绍了 RequireJS，使它更简洁易懂
+			        </h3>
+			        <div class="post-content-preview">
+			            一、为什么要用 RequireJS？
+			            &lt;script src="1.js"&gt;&lt;/script&gt;
+			            &lt;script src="2.js"&gt;&lt;/script&gt;
+			            &lt;script src="3.js"&gt;&lt;/script&gt;
+			            &lt;script src="4.js"&gt;&lt;/script&gt;
+			            &lt;script sr...
+			        </div>
+			    </a>
+			    <p class="post-meta">Posted by Hannanhza on April 5, 2016</p>        
+			</div>
+			<hr> 
+    
+            <div class="post-preview">
+                <a href="notes05-2.html">
+                    <h2 class="post-title">基于流的自动化构建工具之 Gulp </h2> 
+        			<h3 class="post-subtitle">
+           				 通过代码优于配置的策略，Gulp 让简单的任务简单，复杂的任务可管理。
+        			</h3>  
+			        <div class="post-content-preview">
+			            什么是 Gulp ?Gulp 官方网站 对于 Gulp 的定义如下：
+			            Automate and enhance your workflow
+			            自动化并改善你的工作流，姑且称它为自动化构建工具。为什么要使用 Gulp ?在传统的前端开发环节中，我们做着大量的重复工作：
+			             一个项目的流程大概是：首先在某个目录下创建自己的项目目录，然后手动建立 css / img / js  等文件夹，然后手...
+			        </div>
+                </a>
+                <p class="post-meta">Posted by Hannanhza on April 5, 2016</p>       
+			</div>
+			<hr>
+<div class="spinner">
+  <p>博客还在搭建中</p>
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div> 
 
-
-
-
-	</script>
 </body>
 </html>
