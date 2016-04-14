@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>newblog</title>
+	<link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="common.css">
+</head>
+<body>
+	<div id="sidebar" >
+		<div class="profile">
+			<a href="javascript:;">
+				<img src="img/an.jpg" alt="an's blog">
+			</a>
+			<span>赵桉的博客</span>
+		</div>
+		<ul class="buttons">
+			<li >
+				<a href="newblog.html">
+				  <i class="fa fa-rss" aria-hidden="true"></i>
+				  <span>首页</span>
+			    </a>
+		    </li>
+			<li>
+				<a href="">
+				  <i class="fa fa-tags" aria-hidden="true"></i><span>标签</span>
+			    </a>
+			</li>
+			<li>
+				<a href="">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<span>关于</span>
+			    </a>
+			</li>
+			<li>
+				<a href="http://github.com/hannahza">
+				<i class="fa fa-github" aria-hidden="true"></i>
+				<span>github.com/hannahza</span>
+			    </a>
+			</li>
+		</ul>
+		<div id="skill">
+			<div class="html all">
+				<div class="progress h85"></div>
+				<span class="left">HTML/CSS</span>
+			</div>
+
+			<div class="js all">
+				<div class="progress h86"></div>
+				<span class="left">JavaScript</span>
+			</div>
+			<div class="php all">
+				<div class="progress h87"></div>
+				<span class="left">PHP</span>
+			</div>
+		</div>
+	</div>
+	<div id="header">
+		<div class="btn-bar">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+		</div>
+		<h4>赵桉的博客</h4>
+        <a href="javascript:;">
+        	<img src="img/an.jpg" alt="an's blog">
+        </a>
+        <ul class="slider" style="display:none;">
+        	<li>
+				<a href="newblog.html"><span>首页</span></a>
+		    </li>
+			<li>
+				<a href=""><span>标签</span></a>
+			</li>
+			<li>
+				<a href=""><span>关于</span></a>
+			</li>
+			<li>
+				<a href="github.com/hannahza"><span>github.com/hannahza</span></a>
+			</li>
+        </ul>
+	</div>
+	<div id="main">
+		<section id="page-index">
+			<article>
+				<h2 >one-学习笔记之JavaScript数据类型检测</h2>
+                <p>＃   JavaScript中如何检测数据类型</p>
+			    <blockquote>
+			        <p>在刚开始学习JavaScript时，从《JavaScript高级程序设计》这本书得知检测数据类型是可以用typeof和instanceof这两个操作符，可是用的时候确产生了一些困惑。在这里说一下JavaScript中如何检测数据类型和typeof、instanceof的用法</p>
+			    </blockquote><br/>
+			    <a href="notes1.html"><p class="more">阅读全文>></p></a> 
+
+			</article>
+			<article>
+				<h2 class="post-title"> Two - 学习笔记</h2>
+                <p>
+                     RegExp 之贪婪模式、JavaScript 距离、图片预加载
+                </p>
+                <div>
+                    一、RegExp 之贪婪模式
+
+                    ＃   什么是贪婪匹配？
+                    The three common quantifiers (*, + and ?) are greedy by default because they match as many characters as possible....
+                </div><br/>
+                <a href="notes2.html"><p class="more">阅读全文>></p></a> 
+    
+			</article>
+			<article>
+				 <h2>RequireJS 的基础与入门</h2>
+			        <p>
+			            通过实例，简单介绍了 RequireJS，使它更简洁易懂
+			        </p>
+			        <div>
+			            一、为什么要用 RequireJS？
+			            &lt;script src="1.js"&gt;&lt;/script&gt;
+			            &lt;script src="2.js"&gt;&lt;/script&gt;
+			            &lt;script src="3.js"&gt;&lt;/script&gt;
+			            &lt;script src="4.js"&gt;&lt;/script&gt;
+			            &lt;script sr...
+			        </div><br/>
+			        <a href="notes3.html"><p class="more">阅读全文>></p></a>  
+			</article>
+			<article>
+				<h2>基于流的自动化构建工具之 Gulp </h2> 
+        			<p>
+           				 通过代码优于配置的策略，Gulp 让简单的任务简单，复杂的任务可管理。
+        			</p>  
+			        <div>
+			            什么是 Gulp ?Gulp 官方网站 对于 Gulp 的定义如下：
+			            Automate and enhance your workflow
+			            自动化并改善你的工作流，姑且称它为自动化构建工具。为什么要使用 Gulp ?在传统的前端开发环节中，我们做着大量的重复工作：
+			             一个项目的流程大概是：首先在某个目录下创建自己的项目目录，然后手动建立 css / img / js  等文件夹，然后手...
+			        </div><br/>
+			    <a href="notes4.html"><p class="more">阅读全文>></p></a> 
+			</article>
+		</section>
+	</div>
+<script>
+	var oBtn=document.querySelector('.btn-bar');
+	var oSlider=document.querySelector('.slider');
+//小于768px时的header	
+	oBtn.addEventListener('click',function(){
+		if(oSlider.style.display=='block'){
+		     oSlider.style.height=0;
+		     setTimeout(function(){
+				oSlider.style.display='none';
+			},510);
+		    
+		}else{
+			oSlider.style.display='block';
+			setTimeout(function(){
+				oSlider.style.height=210+'px';
+			},10);
+			
+		}
+	},false)
+
+//进度条
+	var Aprogress = document.getElementsByClassName('progress');
+    // var progressMove = document.getElementById('progress-move');
+    var offwid = [];  //空数组 为了保存进度条原有的宽度
+    for(var i = 0; i < Aprogress.length; i++){
+        offwid[i] = Aprogress[i].offsetWidth;
+        Aprogress[i].style.width = '0'; //将进度条的宽度设为0
+        window.addEventListener('load', function(){
+        	// alert(1);
+            var start = Date.now();
+            requestAnimationFrame(function pmove(){
+                var p = (Date.now() - start)/2000;
+                for(var j = 0; j < Aprogress.length; j++){
+                    Aprogress[j].style.width = p * offwid[j] + 'px';  //原有宽度乘以速率
+                }   
+                if(p >= 1){
+                    for(var k = 0; k < Aprogress.length; k++){
+                        Aprogress[k].style.width = offwid[k] + 'px';  //将边限设为原有值
+                    }
+                }
+                requestAnimationFrame(pmove);
+            });
+        });
+    }
+
+
+</script>
+</body>
+</html>

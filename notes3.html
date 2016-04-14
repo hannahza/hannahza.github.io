@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="common.css">
+</head>
+<body>
+	<div id="sidebar" >
+		<div class="profile">
+			<a href="javascript:;">
+				<img src="img/an.jpg" alt="an's blog">
+			</a>
+			<span>赵桉的博客</span>
+		</div>
+		<ul class="buttons">
+			<li >
+				<a href="newblog.html">
+				  <i class="fa fa-rss" aria-hidden="true"></i>
+				  <span>首页</span>
+			    </a>
+		    </li>
+			<li>
+				<a href="javascript:;">
+				  <i class="fa fa-tags" aria-hidden="true"></i><span>标签</span>
+			    </a>
+			</li>
+			<li>
+				<a href="javascript:;">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<span>关于</span>
+			    </a>
+			</li>
+			<li>
+				<a href="http://github.com/hannahza">
+				<i class="fa fa-github" aria-hidden="true"></i>
+				<span>github.com/hannahza</span>
+			    </a>
+			</li>
+		</ul>
+		
+	</div>
+	<div id="header">
+		<div class="btn-bar">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+		</div>
+		<h4>赵桉的博客</h4>
+        <a href="javascript:;">
+        	<img src="img/an.jpg" alt="an's blog">
+        </a>
+        <ul class="slider" style="display:none;">
+        	<li>
+				<a href="newblog.html"><span>首页</span></a>
+		    </li>
+			<li>
+				<a href=""><span>标签</span></a>
+			</li>
+			<li>
+				<a href=""><span>关于</span></a>
+			</li>
+			<li>
+				<a href="github.com/hannahza"><span>github.com/hannahza</span></a>
+			</li>
+        </ul>
+	</div>
+	<div id="main">
+		<section id="page-index">
+			<article>
+				<h2>RequireJS 的基础与入门</h2>
+				<h3>一、为什么要用 RequireJS？
+                </h3>
+				<pre><code>&lt;script src="1.js"&gt;&lt;/script&gt;</br>&lt;script src="2.js"&gt;&lt;/script&gt;</br>&lt;script src="3.js"&gt;&lt;/script&gt;</br>&lt;script src="4.js"&gt;&lt;/script&gt;</br>&lt;script src="5.js"&gt;&lt;/script&gt;</code></pre>
+				<p>这样的写法有很大的缺点:</p>
+				<ul>
+				<li>1.加载的时候，浏览器会停止网页渲染，加载文件越多，网页失去响应的时间就会越长；</li>
+				<li>2.由于 js 文件之间存在依赖关系，因此必须严格保证加载顺序（比如上例的 1.js 要在 2.js 的前面），依赖性最大的模块一定要放到最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难。</li>
+				</ul>
+				<p>为了解决上述问题，于是 <code>RequireJS</code> 诞生了。</p>
+				<div></div>
+				<h3>二、RequireJS 的准备和加载</h3>
+				<p>
+				    第一步，你需要去 
+				 <a href="http://requirejs.org/docs/download.html" target="_blank">官方网站</a> 下载相应的 <code>RequireJS</code> 版本。
+				</p>
+				<p>第二步，假定你把它放在 js 子目录下，那么</p>
+				   <pre><code>&lt;script src="js/require.js" defer async="true" data-main="js/main"&gt;&lt;/script&gt; </code></pre>
+				   <p>
+				    async 属性表明这个文件需要异步加载，避免网页失去响应。IE 不支持这个属性，只支持 defer，所以把 defer 也写上。当然，如果你是把它放在网页底部，那么就可以去掉 defer async 属性,如下：
+				   </p>
+				   <pre><code>&lt;script src="js/require.js" data-main="js/main"&gt;&lt;/script&gt;</code></pre>
+				   <p>
+				    data-main 属性：指定网页程序的主模块。在上例中，就是 js 目录下面的 main.js，这个文件会第一个被 require.js 加载。由于 require.js 默认的文件后缀名是 js，所以可以把 main.js 简写成 main .
+				   </p>
+				   <div></div>
+				   <h3>三、主模块（main.js）的写法</h3>
+				   <p>
+				        一般来说，主模块需要依赖于其它模块；如果没有依赖，也就没有用 RequireJS 的必要了。
+				   </p>
+				   <!-- <div></div> -->
+				   <pre><ul><li><code><span>// main.js</span></code></li><li><code></code></li><li><code><span>　　require</span><span>([</span><span>'moduleA'</span><span>,</span><span> </span><span>'moduleB'</span><span>,</span><span> </span><span>'moduleC'</span><span>],</span><span> </span><span>function</span><span> </span><span>(</span><span>moduleA</span><span>,</span><span> moduleB</span><span>,</span><span> moduleC</span><span>){</span></code></li><li><code><span>　　　　</span><span>// doSomething;</span></code></li><li><code><span>　　</span><span>});</span></code></li></ul></pre><p>require() 函数接受两个参数：</p><ul>
+				<li>第一个参数：数组。表示所依赖的模块。</li>
+				<li>第二个参数：回调函数。当前面指定的模块都加载成功后，它将被调用。加载的模块会以参数形式传入该函数，从而在回调函数内部就可以使用这些模块。</li>
+				</ul>
+
+
+				<h3>四、主模块（main.js）的加载</h3>
+				<p>假定你的项目文件夹如下图：</p>
+				<img src="img/NewRepository.png" />
+				<p>我们先来说一下 require.config() 方法，我们可以对模块的加载行为进行自定义。require.config() 就写在主模块（main.js）的头部。参数就是一个对象，这个对象的 paths 属性指定各个模块的加载路径，那么：</p>
+
+                <pre><ul><li><code><span>// main.js</span></code></li><li><code></code></li><li><code><span>// 第一种写法</span></code></li><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>    baseUrl</span><span>:</span><span>'js/app'</span><span>,</span></code></li><li><code><span>    paths</span><span>:{</span></code></li><li><code><span>        </span><span>"a"</span><span>:</span><span>"aDemo"</span><span>,</span></code></li><li><code><span>        </span><span>"b"</span><span>:</span><span>"bDemo"</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>});</span></code></li><li><code></code></li><li><code><span>// 第二种写法</span></code></li><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>    paths</span><span>:{</span></code></li><li><code><span>        </span><span>"a"</span><span>:</span><span>"js/app/aDemo"</span><span>,</span></code></li><li><code><span>        </span><span>"b"</span><span>:</span><span>"js/app/bDemo"</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>});</span></code></li><li><code></code></li><li><code><span>// 以上两种写法任选其一即可,然后</span></code></li><li><code></code></li><li><code><span>require</span><span>([</span><span>'a'</span><span>,</span><span>'b'</span><span>],</span><span>function</span><span>(</span><span>a</span><span>,</span><span>b</span><span>){</span></code></li><li><code><span>    </span><span>// doSomething;</span></code></li><li><code><span>})</span></code></li></ul></pre>
+
+
+				<h3>五、AMD 模块的写法</h3><p>require.js 加载的模块，采用 AMD 规范。也就是说，模块必须按照 AMD 的规定来写。具体来说，就是模块必须采用特定的 define() 函数来定义。</p><p>假定 aDemo.js 依赖于 cDemo.js , bDemo.js 不依赖任何其它模块。编写如下代码：</p><div></div><pre><ul><li><code><span>// cDemo.js</span></code></li><li><code></code></li><li><code><span>define</span><span>(</span><span>function</span><span>(){</span></code></li><li><code><span>    </span><span>return</span><span> </span><span>{</span></code></li><li><code><span>        name</span><span>:</span><span>'Hannahza'</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>})</span></code></li></ul></pre><div></div><pre><ul><li><code><span>// aDemo.js</span></code></li><li><code></code></li><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>    baseUrl</span><span>:</span><span>'js/app'</span><span>,</span></code></li><li><code><span>    paths</span><span>:{</span></code></li><li><code><span>        </span><span>"c"</span><span>:</span><span>"cDemo"</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>})</span></code></li><li><code></code></li><li><code></code></li><li><code><span>define</span><span>([</span><span>'c'</span><span>],</span><span>function</span><span>(</span><span>c</span><span>){</span></code></li><li><code><span>    </span><span>return</span><span>{</span></code></li><li><code><span>        culor</span><span>:</span><span>'black'</span><span>,</span></code></li><li><code><span>        size</span><span>:</span><span>'unsize'</span><span>,</span></code></li><li><code><span>        c</span><span>:</span><span>c</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>});</span></code></li></ul></pre><div></div><pre><ul><li><code><span>// bDemo.js</span></code></li><li><code></code></li><li><code><span>define</span><span>(</span><span>function</span><span>(){</span></code></li><li><code><span>    </span><span>var</span><span> add </span><span>=</span><span> </span><span>function</span><span>(</span><span>x</span><span>,</span><span>y</span><span>){</span></code></li><li><code><span>        </span><span>return</span><span> x </span><span>+</span><span> y</span><span>;</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>    </span><span>var</span><span> subtract </span><span>=</span><span> </span><span>function</span><span>(</span><span>x</span><span>,</span><span>y</span><span>){</span></code></li><li><code><span>        </span><span>return</span><span> x </span><span>-</span><span> y</span><span>;</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code></code></li><li><code><span>    </span><span>return</span><span>{</span></code></li><li><code><span>        add</span><span>:</span><span>add</span><span>,</span></code></li><li><code><span>        subtract</span><span>:</span><span>subtract</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>})</span></code></li></ul></pre>
+
+
+				<h3>六、完善主模块（main.js）</h3>
+				<pre><ul><li><code><span>// main.js</span></code></li><li><code></code></li><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>    baseUrl</span><span>:</span><span>'js/app'</span><span>,</span></code></li><li><code><span>    paths</span><span>:{</span></code></li><li><code><span>        </span><span>"a"</span><span>:</span><span>"aDemo"</span><span>,</span></code></li><li><code><span>        </span><span>"b"</span><span>:</span><span>"bDemo"</span></code></li><li><code><span>    </span><span>}</span></code></li><li><code><span>});</span></code></li><li><code></code></li><li><code><span>require</span><span>([</span><span>'a'</span><span>,</span><span>'b'</span><span>],</span><span>function</span><span>(</span><span>a</span><span>,</span><span>b</span><span>){</span></code></li><li><code><span>    consule</span><span>.</span><span>log</span><span>(</span><span>b</span><span>.</span><span>add</span><span>(</span><span>4</span><span>,</span><span>5</span><span>));</span></code></li><li><code><span>    consule</span><span>.</span><span>log</span><span>(</span><span>b</span><span>.</span><span>subtract</span><span>(</span><span>11</span><span>,</span><span>22</span><span>));</span></code></li><li><code><span>    consule</span><span>.</span><span>log</span><span>(</span><span>a</span><span>);</span></code></li><li><code><span>    consule</span><span>.</span><span>log</span><span>(</span><span>a</span><span>.</span><span>c</span><span>.</span><span>name</span><span>);</span></code></li><li><code><span>})</span></code></li></ul></pre>
+
+
+				<h3 >七、加载非规范的模块</h3><p>理论上，require.js 加载的模块，必须是按照 AMD 规范、用 define() 函数定义的模块。但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合 AMD 规范，更多的库并不符合。那么，require.js 是否能够加载非规范的模块呢？</p><p>回答是可以的。</p><p>这样的模块在用 require() 加载之前，要先用 require.config() 方法，定义它们的一些特征。举例来说，underscore 和 backbone 这两个库，都没有采用 AMD 规范编写。如果要加载它们的话，必须先定义它们的特征。</p><div></div><pre><ul><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>　　　　shim</span><span>:</span><span> </span><span>{</span></code></li><li><code><span>　　　　　　</span><span>'underscore'</span><span>:{</span></code></li><li><code><span>　　　　　　　　exports</span><span>:</span><span> </span><span>'_'</span></code></li><li><code><span>　　　　　　</span><span>},</span></code></li><li><code><span>　　　　　　</span><span>'backbone'</span><span>:</span><span> </span><span>{</span></code></li><li><code><span>　　　　　　　　deps</span><span>:</span><span> </span><span>[</span><span>'underscore'</span><span>,</span><span> </span><span>'jquery'</span><span>],</span></code></li><li><code><span>　　　　　　　　exports</span><span>:</span><span> </span><span>'Backbone'</span></code></li><li><code><span>　　　　　　</span><span>}</span></code></li><li><code><span>　　　　</span><span>}</span></code></li><li><code><span>　　</span><span>});</span></code></li></ul></pre><p>require.config() 接受一个配置对象，这个对象除了有前面说过的 paths 属性之外，还有一个 shim 属性，专门用来配置不兼容的模块。具体来说，每个模块要定义两个属性：</p><ul>
+				<li>exports 值（输出的变量名），表明这个模块外部调用时的名称；</li>
+				<li>deps 数组，表明该模块的依赖性。</li>
+				</ul><p>比如，jQuery的插件可以这样定义：</p><div></div><pre><ul><li><code><span>require</span><span>.</span><span>config</span><span>({</span></code></li><li><code><span>　　　　shim</span><span>:</span><span> </span><span>{</span></code></li><li><code><span>　　　      </span><span>'jquery.scrull'</span><span>:</span><span> </span><span>{</span></code></li><li><code><span>　　　　　      deps</span><span>:</span><span> </span><span>[</span><span>'jquery'</span><span>],</span></code></li><li><code><span>　　　　　      exports</span><span>:</span><span> </span><span>'jQuery.fn.scrull'</span></code></li><li><code><span>　　　      </span><span>}</span></code></li><li><code><span>　　    </span><span>}</span></code></li><li><code><span>　　</span><span>});</span></code></li></ul></pre>
+
+				<h3>
+	              八、小结
+                </h3>
+                <p>特别鸣谢 <a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank">阮一峰的网络日志</a> 。</p>
+                <p>本文简单介绍了 RequireJS 的基础与入门，更多知识可查询 <a href="http://www.requirejs.cn" target="_blank"> RequireJS 中文网</a>。</p></div>
+			</article>
+		</section>
+    </div>
+</body>
+</html>
